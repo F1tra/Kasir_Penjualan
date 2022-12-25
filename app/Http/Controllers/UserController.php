@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Profile;
-
-
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 

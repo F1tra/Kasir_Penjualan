@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TpembelianbarangController;
 
 
 /*
@@ -30,7 +31,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::resource('/user', UserController::class)->middleware('checkRole:Admin');
     Route::resource('/dashboard', DashboardController::class)->only(['index'])->middleware('checkRole:Admin');
-
-
+    // transaksi
+    Route::resource('/transaksi-pembelian-barang', TpembelianbarangController::class)->middleware('checkRole:Admin,Kasir');
+    // transaksi
 });
 // });
