@@ -56,7 +56,12 @@ Data Pengguna Aplikasi Kasir
                         <td>{{ $key->role }}</td>
                         <td>{{ $key->created_at }}</td>
                         <td>{{ $key->updated_at }}</td>
-
+                        <td class="text-center">
+                            @auth
+                            <a href="/user/{{$key->id}}/edit" class="btn btn-outline-primary"><i
+                                    class="far fa-edit"></i></a>
+                            @endauth
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
