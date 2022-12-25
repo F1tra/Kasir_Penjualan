@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 
 
@@ -30,5 +29,8 @@ Route::group(['middleware' => ['web']], function () {
     // Halaman Utama
 
     Route::resource('/user', UserController::class)->middleware('checkRole:Admin');
+    Route::resource('/dashboard', DashboardController::class)->only(['index'])->middleware('checkRole:Admin');
+
+
 });
 // });

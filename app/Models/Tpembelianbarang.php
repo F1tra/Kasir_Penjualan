@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tpembelianbarang extends Model
 {
+   
     
 }

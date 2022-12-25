@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use PDF;
 use App\Models\User;
 use App\Models\Profile;
-use App\Exports\UserExport;
 
 
 use Illuminate\Http\Request;
