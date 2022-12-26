@@ -36,7 +36,7 @@ Route::group(['middleware' => ['web']], function () {
     // transaksi
     Route::resource('/transaksi-pembelian', TpembelianController::class)->only(['index', 'show'])->middleware('checkRole:Admin,Kasir');
     Route::resource('/transaksi-pembelian-barang', TpembelianbarangController::class)->middleware('checkRole:Admin,Kasir');
-   // transaksi
+    // transaksi
     // master barang
     Route::resource('/master-barang', MbarangController::class)->middleware('checkRole:Admin,Kasir');
     // master barang

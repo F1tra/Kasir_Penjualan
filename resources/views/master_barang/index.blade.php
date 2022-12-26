@@ -9,6 +9,8 @@ Aplikasi Kasir
 Data Barang
 @endsection
 @section('content')
+<a href="{{ url('master-barang/create') }}"><button type="button" class="btn btn-outline-primary"><i
+            class="fas fa-plus-square"></i></button></a>
 <div class="h2 mb-3 text-center">Data Barang</div>
 <hr style="width:75%">
 <!-- DataTales Example -->
