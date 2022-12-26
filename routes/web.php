@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TpembelianbarangController;
 use App\Http\Controllers\TpembelianController;
+use App\Http\Controllers\MbarangController;
 
 
 /*
@@ -36,5 +37,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('/transaksi-pembelian', TpembelianController::class)->only(['index', 'show'])->middleware('checkRole:Admin,Kasir');
     Route::resource('/transaksi-pembelian-barang', TpembelianbarangController::class)->middleware('checkRole:Admin,Kasir');
    // transaksi
+    // master barang
+    Route::resource('/master-barang', MbarangController::class)->middleware('checkRole:Admin,Kasir');
+    // master barang
 });
 // });
