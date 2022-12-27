@@ -16,4 +16,8 @@ class Tpembelian extends Model
     {
         return $this->hasMany('App\Models\Tpembelianbarang', 'transaksi_pembelian_id');
     }
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y H:i:s');
+    }
 }
