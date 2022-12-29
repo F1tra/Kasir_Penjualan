@@ -50,7 +50,10 @@ Data Barang
                         <td>{{ $key->harga_satuan }}</td>
                         <td>{{ $key->created_at }}</td>
                         <td>{{ $key->updated_at }}</td>
-
+                        <td class="text-center">
+                            <a href="/master-barang/{{$key->id}}/edit" class="btn btn-outline-primary"><i
+                                    class="far fa-edit"></i></a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
