@@ -72,5 +72,68 @@ class TpembelianbarangController extends Controller
         Alert::success('Berhasil', 'Menambahkan Data Transaksi Pembelian Barang');
         return redirect('/transaksi-pembelian-barang');
     }
+    public function show($id)
+    {
+        $tpembelianb = TpembelianBarang::find($id);
+
+        return view('transaksi_pembelian_barang.show', compact('tpembelianb'));
+    }
+    public function edit($id)
+    {
+        $tpembelianb = TpembelianBarang::find($id);
+        $tpembelian = Tpembelian::all();
+        $barang = Mbarang::all();
+        return view('transaksi_pembelian_barang.edit', compact('tpembelianb', 'tpembelian', 'barang'));
+    }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'transaksi_pembelian_id' => 'required',
+            'master_barang_id' => 'required',
+            'jumlah' => 'required',
+            'harga_satuan' => 'required',
+        ]);
+
+        $tpembelianb = TpembelianBarang::find($id);
+
+        $TpembelianBarang = [
+            "transaksi_pembelian_id" => $request["transaksi_pembelian_id"],
+            "master_barang_id" => $request["master_barang_id"],
+            "jumlah" => $request["jumlah"],
+            "harga_satuan" => $request["harga_satuan"],
+        ];
+
+        $tpembelianb2 = TpembelianBarang::find($TpembelianBarang['transaksi_pembelian_id']);
+        $tpembelian = Tpembelian::find($TpembelianBarang['transaksi_pembelian_id']);
+
+        $total_harga_baru = $request["jumlah"] * $request["harga_satuan"];
+        $total_harga_lama = $tpembelianb2["jumlah"] * $tpembelianb2["harga_satuan"];
+
+        if ($total_harga_lama < $total_harga_baru) {
+            $total_harga = $total_harga_baru - $total_harga_lama;
+            $seluruh_total_harga = ($tpembelian['total_harga'] + $total_harga);
+            $transaksi_pembelian = [
+                "total_harga" => $seluruh_total_harga,
+            ];
+            $tpembelian->update($transaksi_pembelian);
+            $tpembelianb->update($TpembelianBarang);
+            Alert::success('Berhasil', 'Mengubah Data Transaksi Pembelian Barang');
+            return redirect('/transaksi-pembelian-barang');
+        } elseif ($total_harga_lama > $total_harga_baru) {
+            $total_harga = $total_harga_lama - $total_harga_baru;
+            $seluruh_total_harga = ($tpembelian['total_harga'] - $total_harga);
+            $transaksi_pembelian = [
+                "total_harga" => $seluruh_total_harga,
+            ];
+            $tpembelian->update($transaksi_pembelian);
+            $tpembelianb->update($TpembelianBarang);
+            Alert::success('Berhasil', 'Mengubah Data Transaksi Pembelian Barang');
+            return redirect('/transaksi-pembelian-barang');
+        } elseif ($total_harga_lama == $total_harga_baru) {
+            Alert::success('Berhasil', 'Mengubah Data Transaksi Pembelian Barang');
+            return redirect('/transaksi-pembelian-barang');
+        }
+    }
+
    
 }

@@ -59,6 +59,14 @@ Data Daftar Transaksi Pembelian Barang
                         <td>{{ $key->harga_satuan * $key->jumlah }}</td>
                         <td>{{ $key->created_at }}</td>
                         <td>{{ $key->updated_at }}</td>
+                        <td class="text-center">
+                            <a href="/transaksi-pembelian-barang/{{$key->id}}" class="btn btn-outline-info"><i
+                                    class="fas fa-eye"></i></a>
+                            @auth
+                            <a href="/transaksi-pembelian-barang/{{$key->id}}/edit" class="btn btn-outline-primary"><i
+                                    class="far fa-edit"></i></a>
+                            @endauth
+                        </td>
 
                         @endforeach
                 </tbody>
