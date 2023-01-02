@@ -132,7 +132,25 @@ class TpembelianbarangController extends Controller
         } elseif ($total_harga_lama == $total_harga_baru) {
             Alert::success('Berhasil', 'Mengubah Data Transaksi Pembelian Barang');
             return redirect('/transaksi-pembelian-barang');
+
         }
+        
+    }
+    public function destroy($id)
+    {
+        $tpembelianb = TpembelianBarang::find($id);
+        $tpembelian = Tpembelian::find($tpembelianb->transaksi_pembelian_id);
+
+        $total_harga_lama = $tpembelianb["jumlah"] * $tpembelianb["harga_satuan"];
+        $seluruh_total_harga = ($tpembelian['total_harga'] - $total_harga_lama);
+        $transaksi_pembelian = [
+            "total_harga" => $seluruh_total_harga,
+
+        ];
+        $tpembelian->update($transaksi_pembelian);
+        $tpembelianb->delete();
+        Alert::success('Berhasil', 'Menghapus Data Transaksi Pembelian Barang');
+        return redirect('/transaksi-pembelian-barang');
     }
 
    

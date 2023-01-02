@@ -65,6 +65,12 @@ Data Daftar Transaksi Pembelian Barang
                             @auth
                             <a href="/transaksi-pembelian-barang/{{$key->id}}/edit" class="btn btn-outline-primary"><i
                                     class="far fa-edit"></i></a>
+                            <form action="/transaksi-pembelian-barang/{{$key->id}}" method="POST" class="display-non">
+                                @csrf
+                                @method('DELETE')
+                                <button input type="submit" class="btn btn-outline-danger my-1" value="Delete"><i
+                                        class="far fa-trash-alt"></i></button>
+                            </form>
                             @endauth
                         </td>
 

@@ -33,6 +33,7 @@ class TpembelianController extends Controller
         $pdf = PDF::loadview('transaksi_pembelian.pdf_detail', compact('tpembelian'));
         return $pdf->stream('transaksi_pembelian_detail.pdf');
     }
+   
   
   
 }
