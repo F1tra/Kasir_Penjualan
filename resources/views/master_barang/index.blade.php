@@ -53,6 +53,19 @@ Data Barang
                         <td class="text-center">
                             <a href="/master-barang/{{$key->id}}/edit" class="btn btn-outline-primary"><i
                                     class="far fa-edit"></i></a>
+                            @auth
+                            <a href="/master-barang/{{$key->id}}" class="btn btn-outline-info"><i
+                                    class="fas fa-eye"></i></a>
+
+                            <form action="/master-barang/{{$key->id}}" method="POST" class="display-non">
+                                @csrf
+                                @method('DELETE')
+                                <button input type="submit" class="btn btn-outline-danger my-1" value="Delete"><i
+                                        class="far fa-trash-alt"></i></button>
+                            </form>
+                            {{-- <a href="/transaksi-pembelian-barang/{{$key->id}}/create" class="btn
+                            btn-outline-success"><i class="fas fa-shopping-cart"></i></a> --}}
+                            @endauth
                         </td>
                     </tr>
                     @endforeach

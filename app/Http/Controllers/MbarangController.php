@@ -14,6 +14,7 @@ class MbarangController extends Controller
         $barang = Mbarang::all();
         return view('master_barang.index', compact('barang'));
     }
+    // create menambahkan data
     public function create()
     {
         return view('master_barang.create');
@@ -33,12 +34,13 @@ class MbarangController extends Controller
         Alert::success('Berhasil', 'Menambahkan Data Barang');
         return redirect('/master-barang');
     }
-
+// edit
     public function edit($id)
     {
         $barang = Mbarang::find($id);
         return view('master_barang.edit', compact('barang'));
     }
+    //update
     public function update(request $request, $id)
     {
         $request->validate([
@@ -57,6 +59,21 @@ class MbarangController extends Controller
         Alert::success('Berhasil', 'Mengubah Data Barang');
         return redirect('/master-barang');
     }
+    //show pada master barang
+    public function show($id)
+    {
+        $barang = Mbarang::find($id);
+        return view('master_barang.show', compact('barang'));
+    }
+    //menghapus pada master barang
+    public function destroy($id)
+    {
+        $barang = Mbarang::find($id);
+        $barang->delete();
+        Alert::success('Berhasil', 'Menghapus Data Barang');
+        return redirect('/master-barang');
+    }
+
 
 
 }
