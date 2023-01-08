@@ -159,6 +159,12 @@ class TpembelianbarangController extends Controller
         $pdf = PDF::loadview('transaksi_pembelian_barang.pdf', compact('tpembelianb'));
         return $pdf->stream('transaksi_pembelian_barang.pdf');
     }
+    public function pdf_detail($id)
+    {
+        $tpembelianb = TpembelianBarang::find($id);
+        $pdf = PDF::loadview('transaksi_pembelian_barang.pdf_detail', compact('tpembelianb'));
+        return $pdf->stream('transaksi_pembelian_barang_detail.pdf');
+    }
 
    
 }

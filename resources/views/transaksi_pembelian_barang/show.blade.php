@@ -13,6 +13,10 @@ Detail Data Transaksi Pembelian Barang
         Detail Data Transaksi Pembelian Barang
     </div>
     <div class="card-body">
+        <div class="mb-3">
+            <a href="{{ url('pdf-transaksi-pembelian-barang-detail') }}/{{ $tpembelianb->id }}"><button type="button"
+                    class="btn btn-outline-danger"><i class="fas fa-file-pdf"></i></button></a>
+        </div>
         <h4 class="card-text"><b>Nomor Daftar Transaksi Pembelian</b> : {{ $tpembelianb->transaksi_pembelian_id }}</h4>
         <h4 class="card-text"><b>Nama Barang</b> : {{ $tpembelianb->master_barang->nama_barang }}</h4>
         <h4 class="card-text"><b>Jumlah</b> : {{ $tpembelianb->jumlah }}</h4>
