@@ -13,6 +13,10 @@ Data Lengkap Barang
         Detail Data Lengkap Barang
     </div>
     <div class="card-body">
+        <div class="mb-3">
+            <a href="{{ url('pdf-master-barang-detail') }}/{{ $barang->id }}"><button type="button"
+                    class="btn btn-outline-danger"><i class="fas fa-file-pdf"></i></button></a>
+        </div>
         <h4 class="card-text"><b>ID Barang</b> : {{ $barang->id }}</h4>
         <h4 class="card-text"><b>Nama Barang</b> : {{ $barang->nama_barang }}</h4>
         <h4 class="card-text"><b>Harga Satuan</b> : {{ $barang->harga_satuan }}</h4>

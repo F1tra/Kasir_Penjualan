@@ -11,6 +11,8 @@ Data Barang
 @section('content')
 <a href="{{ url('master-barang/create') }}"><button type="button" class="btn btn-outline-primary"><i
             class="fas fa-plus-square"></i></button></a>
+<a href="{{ url('pdf-master-barang') }}"><button type="button" class="btn btn-outline-danger"><i
+            class="fas fa-file-pdf"></i></button></a>
 <div class="h2 mb-3 text-center">Data Barang</div>
 <hr style="width:75%">
 <!-- DataTales Example -->
