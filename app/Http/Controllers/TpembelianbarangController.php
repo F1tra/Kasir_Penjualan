@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Tpembelian;
 use App\Models\Mbarang;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
 
 class TpembelianbarangController extends Controller
 {
@@ -151,6 +152,12 @@ class TpembelianbarangController extends Controller
         $tpembelianb->delete();
         Alert::success('Berhasil', 'Menghapus Data Transaksi Pembelian Barang');
         return redirect('/transaksi-pembelian-barang');
+    }
+    public function pdf()
+    {
+        $tpembelianb = TpembelianBarang::all();
+        $pdf = PDF::loadview('transaksi_pembelian_barang.pdf', compact('tpembelianb'));
+        return $pdf->stream('transaksi_pembelian_barang.pdf');
     }
 
    
