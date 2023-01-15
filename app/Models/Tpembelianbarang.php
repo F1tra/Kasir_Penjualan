@@ -25,5 +25,9 @@ class Tpembelianbarang extends Model
     {
         return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y H:i:s');
     }
+    public function getUpdatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['updated_at'])->translatedFormat('l, d F Y H:i:s');
+    }
 
 }

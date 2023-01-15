@@ -5,6 +5,7 @@ use App\Models\Tpembelianbarang;
 use Illuminate\Http\Request;
 use App\Models\Tpembelian;
 use App\Models\Mbarang;
+use App\Exports\TpembelianbExport;
 use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
 
@@ -164,6 +165,10 @@ class TpembelianbarangController extends Controller
         $tpembelianb = TpembelianBarang::find($id);
         $pdf = PDF::loadview('transaksi_pembelian_barang.pdf_detail', compact('tpembelianb'));
         return $pdf->stream('transaksi_pembelian_barang_detail.pdf');
+    }
+    public function excel()
+    {
+        return \Maatwebsite\Excel\Facades\Excel::download(new TpembelianbExport, 'transaksi-pembelian-barang.xlsx');
     }
 
    

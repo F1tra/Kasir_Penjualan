@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mbarang;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Exports\MbarangExport;
 use PDF;
 
 
@@ -86,6 +87,10 @@ class MbarangController extends Controller
         $barang = Mbarang::find($id);
         $pdf = PDF::loadview('master_barang.pdf_detail', compact('barang'));
         return $pdf->stream('master_barang_detail.pdf');
+    }
+    public function excel()
+    {
+        return \Maatwebsite\Excel\Facades\Excel::download(new MbarangExport, 'master-barang.xlsx');
     }
 
 
