@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Tpembelianbarang;
 use DB;
 use PDF;
-
+use App\Exports\TpembelianExport;
 class TpembelianController extends Controller
 {
 
@@ -32,6 +32,10 @@ class TpembelianController extends Controller
         $tpembelian = Tpembelian::find($id);
         $pdf = PDF::loadview('transaksi_pembelian.pdf_detail', compact('tpembelian'));
         return $pdf->stream('transaksi_pembelian_detail.pdf');
+    }
+    public function excel()
+    {
+        return \Maatwebsite\Excel\Facades\Excel::download(new TpembelianExport, 'transaksi-pembelian.xlsx');
     }
    
   
