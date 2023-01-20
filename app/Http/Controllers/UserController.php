@@ -157,4 +157,16 @@ class UserController extends Controller
         Alert::success('Berhasil', 'Mengubah Akun Pengguna Apps');
         return redirect('user/');
     }
+    public function cari(Request $request)
+    {
+        // menangkap data pencarian
+        $cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $user = User::where('name', 'role', $cari)->get();
+
+        // ddd($user);
+        // mengirim data pegawai ke view index
+        return view('data_pengguna.index', compact('user'));
+    }
 }

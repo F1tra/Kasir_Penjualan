@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Database\Seeder;
 use App\Models\Mbarang;
 use App\Models\Tpembelianbarang;
@@ -42,5 +43,16 @@ class DatabaseSeeder extends Seeder
             'jumlah' => 8,
             'harga_satuan' => 20000,
         ]);
+        
+        // user
+        User::create([
+            'name' => 'pratamafitra',
+            'username' => 'pratama',
+            'email' => 'pratamafitra@gmail.com',
+            'password' => Hash::make($password),
+            'role' => 'Kasir',
+        ]);
+
     }
+    
 }
