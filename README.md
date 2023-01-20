@@ -1,3 +1,9 @@
+## pembuatan aplikasi oleh kelompok
+
+1.kasir
+2.kelompok 7
+anggota: fitra maulana pratama, khoerul,alviansyah
+
 ## fitur aplikasi kasir
 
 1. Mencatat transaksi pembelian barang
