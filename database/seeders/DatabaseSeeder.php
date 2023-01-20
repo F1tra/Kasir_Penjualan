@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Mbarang;
+use App\Models\Tpembelianbarang;
 class DatabaseSeeder extends Seeder
 {
     public function run()
@@ -34,5 +35,12 @@ class DatabaseSeeder extends Seeder
             'harga_satuan' => '20000',
         ]);
         //Barang
+        // pembelian barang
+        Tpembelianbarang::create([
+            'transaksi_pembelian_id' => 2,
+            'master_barang_id' => 5,
+            'jumlah' => 8,
+            'harga_satuan' => 20000,
+        ]);
     }
 }
