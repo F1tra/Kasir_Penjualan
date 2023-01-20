@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TpembelianbarangController;
 use App\Http\Controllers\TpembelianController;
@@ -32,6 +33,7 @@ Route::group(['middleware' => ['web']], function () {
     // Halaman Utama
 
     Route::resource('/user', UserController::class)->middleware('checkRole:Admin');
+    Route::resource('/profile', ProfileController::class)->only(['index', 'update', 'show'])->middleware('checkRole:Admin,Kasir');
     Route::resource('/dashboard', DashboardController::class)->only(['index'])->middleware('checkRole:Admin');
     // transaksi
     Route::resource('/transaksi-pembelian', TpembelianController::class)->only(['index', 'show'])->middleware('checkRole:Admin,Kasir');
